@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "how-to-npm": "^2.5.0",
+    "learnyounode": "^3.5.10",
+    "scope-chains-closures": "^1.0.4",
+    "stream-adventure": "^4.0.5"
+  }
+}
