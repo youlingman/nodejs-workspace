@@ -1,0 +1,20 @@
+{
+  "name": "@youlingman/how-to-npm",
+  "version": "1.0.1",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "author": "youlingman",
+  "license": "ISC",
+  "description": "hello world",
+  "repository": {
+    "type": "git",
+    "url": "git"
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "keywords": [
+    "youlingman"
+  ]
+}
