@@ -5,19 +5,24 @@ var zlib = require('zlib');
     
 module.exports = function () {
 	var holder = { name : "", books : [] };
-	var reducer = through.obj(
-		function(book, _, next) {
-			if(book.type === 'book') {
-				holder.books += book.name;
-			} else if(book.type === 'genre') {
-				this.push({name : holder.name, books : holder.books});
+	var reducer = through(
+		function(chunk, _, next) {
+			var book = JSON.parse(chunk);
+
+			if(row.type === 'genre') {
+				if(holder.name !== "")
+					this.push(JSON.stringify(holder) + "\n");
 				holder.name = book.name;
 				holder.books = [];
+			} else if(row.type === 'book') {
+				holder.books.push(book.name);
 			}
 			next();
 		},
 		function(done) {
+			if(holder.name !== "")
+				this.push(JSON.stringify(holder) + "\n");
 			done();
 		});
-	return combine(split(), reducer, zlib.createGzip())
-}
+	return combine(split(), reducer, zlib.createGzip());
+};
