@@ -2,6 +2,7 @@ var crypto = require('crypto');
 var zlib = require('zlib');
 var tar = require('tar');
 var through = require('through2');
+var concat = require('concat-stream');
 var parser = tar.Parse();
 
 parser.on('entry', function (entry) {
@@ -9,11 +10,15 @@ parser.on('entry', function (entry) {
 	if(entry.type === 'File') {
 		entry
             .pipe(crypto.createHash('md5', { encoding: 'hex' }))
-            .pipe(through(function(data, _, next) {
-                this.push(data.toString() + ' ' + entry.path + '\n');
-                next();
-            }))
-            .pipe(process.stdout);
+            .pipe(concat(function(data) {
+                console.log(data + ' ' + entry.path);
+            }));
+		    // through2 not fit here, may fire more than once for each entry.
+            // .pipe(through(function(data, _, next) {
+            //     this.push(data.toString() + ' ' + entry.path + '\n');
+            //     next();
+            // }))
+            // .pipe(process.stdout);
 	}
 });
 
