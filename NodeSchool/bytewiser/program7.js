@@ -1,0 +1,1 @@
+console.log(JSON.stringify(new Uint16Array((new Uint32Array([process.argv[2]])).buffer)));
