@@ -13,7 +13,10 @@
     "planetproto": "^0.9.0",
     "promise-it-wont-hurt": "^1.1.2",
     "scope-chains-closures": "^1.0.4",
-    "stream-adventure": "^4.0.5"
+    "stream-adventure": "^4.0.5",
+    "test-anything": "^1.1.7",
+    "torrential": "^1.0.4",
+    "tower-of-babel": "^0.9.1"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
