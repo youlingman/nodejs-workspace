@@ -56,7 +56,7 @@ export default class CityList extends Component {
             dataSource: [],
             isSection: false,
         }, function () {
-            this.currentPromise = fetch('http://128.192.179.153/cn/payment/include/phone.json')
+            this.currentPromise = fetch('testurl')
                 .then((response) => response.text())
                 .then((text) => {
                     this.pageData.originData = JSON.parse(text.slice(text.indexOf("=") + 1))
@@ -96,7 +96,7 @@ export default class CityList extends Component {
                 this.setState({
                     isRefreshingFooter: this._getRefreshState(),
                 }, function () {
-                    fetch('http://128.192.179.153/cn/payment/include/phone.json')
+                    fetch('testurl')
                         .then((response) => response.text())
                         .then((text) => {
                             this.pageData.originData = JSON.parse(text.slice(text.indexOf("=") + 1))
